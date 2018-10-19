@@ -7,7 +7,7 @@
 [![API Style](https://img.shields.io/badge/json%3Aapi-v1-blue.svg?style=flat)](http://jsonapi.org)
 
 
-This is an optional server side extension for the [Junkan web application](http://c3-tko.github.io/junkan/). It enables junkan to circumvent same origin policy or X-FRAME-ORIGIN violations. The services of the Junkan-Server are meant to enrich the user experience of the [Junkan web application](http://c3-tko.github.io/junkan/).
+This repository contains a module for a node express server that will be included in the junkan server repo.
 
 [API Specification](https://c3-tko.github.io/junkan-server/docs/api-spec/index.html)
 
