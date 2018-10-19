@@ -1,13 +1,13 @@
 /* global describe, it, before, after */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('../index');
 const sinon = require('sinon');
 const requestPromise = require('request-promise');
 const bluebird = require('bluebird');
 
 chai.should();
 const HTTPStatus = require('http-status-codes');
+const server = require('../index');
 
 chai.use(chaiHttp);
 
@@ -59,8 +59,7 @@ describe('Routes GET/', () => {
       chai.request(server)
         .get('/html/https%3A%2F%2Fwww.google.com')
         .end((err, res) => {
-          const resultHTML =
-            Buffer.from('<html><head><title>GOVNO</title><body>GLUPOST</body></head></html>').toString('base64');
+          const resultHTML = Buffer.from('<html><head><title>GOVNO</title><body>GLUPOST</body></head></html>').toString('base64');
 
           res.should.have.status(HTTPStatus.OK);
           res.headers['content-type'].should.equal('application/vnd.api+json; charset=utf-8');
