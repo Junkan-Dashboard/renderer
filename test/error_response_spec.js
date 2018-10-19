@@ -1,11 +1,11 @@
 /* global describe, it, before, beforeEach, after */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('../index');
 const requestPromise = require('request-promise');
 const bluebird = require('bluebird');
 const sinon = require('sinon');
 const HTTPStatus = require('http-status-codes');
+const server = require('../index');
 const handleErrorResponse = require('../app/errorResponse');
 
 chai.use(chaiHttp);
@@ -123,10 +123,9 @@ describe('Error response handling', () => {
   });
 
   it('should handle a defined HTTP Code', (done) => {
-    const err =
-      {
-        statusCode: HTTPStatus.BAD_REQUEST,
-      };
+    const err = {
+      statusCode: HTTPStatus.BAD_REQUEST,
+    };
 
     handleErrorResponse(err, null, res, null);
 
@@ -136,10 +135,9 @@ describe('Error response handling', () => {
   });
 
   it('should handle an undefined HTTP CODE', (done) => {
-    const err =
-      {
-        statusCode: undefined,
-      };
+    const err = {
+      statusCode: undefined,
+    };
 
     handleErrorResponse(err, null, res, null);
 
@@ -149,21 +147,19 @@ describe('Error response handling', () => {
   });
 
   it('should handle error messages', (done) => {
-    const err =
-      {
-        message: 'TEST',
-      };
+    const err = {
+      message: 'TEST',
+    };
 
-    const errorResponse =
-      {
-        errors:
+    const errorResponse = {
+      errors:
           [
             {
               title: 'TEST',
               status: HTTPStatus.INTERNAL_SERVER_ERROR,
             },
           ],
-      };
+    };
 
     handleErrorResponse(err, null, res, null);
 
@@ -172,21 +168,19 @@ describe('Error response handling', () => {
   });
 
   it('should handle undefined error messages', (done) => {
-    const err =
-      {
-        message: undefined,
-      };
+    const err = {
+      message: undefined,
+    };
 
-    const errorResponse =
-      {
-        errors:
+    const errorResponse = {
+      errors:
           [
             {
               title: HTTPStatus.getStatusText(HTTPStatus.INTERNAL_SERVER_ERROR),
               status: HTTPStatus.INTERNAL_SERVER_ERROR,
             },
           ],
-      };
+    };
 
     handleErrorResponse(err, null, res, null);
 
@@ -195,14 +189,12 @@ describe('Error response handling', () => {
   });
 
   it('should handle error detail', (done) => {
-    const err =
-      {
-        detail: 'TEST',
-      };
+    const err = {
+      detail: 'TEST',
+    };
 
-    const errorResponse =
-      {
-        errors:
+    const errorResponse = {
+      errors:
           [
             {
               title: HTTPStatus.getStatusText(HTTPStatus.INTERNAL_SERVER_ERROR),
@@ -210,7 +202,7 @@ describe('Error response handling', () => {
               detail: 'TEST',
             },
           ],
-      };
+    };
 
     handleErrorResponse(err, null, res, null);
 
@@ -221,16 +213,15 @@ describe('Error response handling', () => {
   it('should handle undefined error detail', (done) => {
     const err = {};
 
-    const errorResponse =
-      {
-        errors:
+    const errorResponse = {
+      errors:
           [
             {
               title: HTTPStatus.getStatusText(HTTPStatus.INTERNAL_SERVER_ERROR),
               status: HTTPStatus.INTERNAL_SERVER_ERROR,
             },
           ],
-      };
+    };
 
     handleErrorResponse(err, null, res, null);
 
