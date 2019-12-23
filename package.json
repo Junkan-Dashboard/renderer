@@ -44,7 +44,7 @@
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
-    "nyc": "^13.1.0",
+    "nyc": "^15.0.0",
     "redoc-cli": "^0.6.4",
     "sinon": "^7.0.0"
   }
